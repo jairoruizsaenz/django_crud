@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Eventos{% endblock %}
+{% block content %}
+
+    <h2>Listado de Eventos</h2>
+
+
+    <form>
+        <h3>Bienvenido {{ user.username }}!</h3>
+        <input type="button" value="Crear evento" onclick="window.location.href='{% url 'eventos:new' %}'" />
+        <input type="button" value="Cerra Sesión" onclick="window.location.href='{% url 'logout' %}'" />
+    </form>
+
+    <ul>
+        {% for evento in object_list %}
+            <li>
+                <p>
+                    <form>
+                        {{ evento.nombre }} | Fecha de creación: {{ evento.fecha_creacion }}
+                        <input type="button" value="Ver detalles" onclick="window.location.href='{% url 'eventos:detail' evento.id %}'" />
+                        <input type="button" value="Editar" onclick="window.location.href='{% url 'eventos:edit' evento.id %}'" />
+                        <input type="button" value="Eliminar" onclick="window.location.href='{% url 'eventos:delete'  evento.id %}'" />
+                    </form>
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

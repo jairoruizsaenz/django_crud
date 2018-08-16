@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestor de eventos ABC{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    <!--
+    <p><a href="{% url 'logout' %}">logout</a></p>
+    -->
+{% else %}
+    <h2>Bienvenido al gestor de eventos ABC</h2>
+    <p>Para continuar debes iniciar sesión, si aún no tienes una cuenta procede a registrarte</p>
+    <input type="button" value="Iniciar Sesión" onclick="window.location.href='{% url 'login' %}'" />
+    <input type="button" value="Registrarse" onclick="window.location.href='{% url 'signup' %}'" />
+{% endif %}
+{% endblock %}

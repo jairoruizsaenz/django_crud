@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+    <h2>Detalles {{ evento.nombre }}</h2>
+    <table>
+
+        <col width="180">
+
+        <tr>
+            <th>Atributo</th>
+            <th>Detalle</th>
+        </tr>
+
+        <tr><td>Usuario</td><td>{{ evento.usuario }}</td></tr>
+        <tr><td>Nombre</td><td>{{ evento.nombre }}</td></tr>
+        <tr><td>Categoria</td><td>{{ evento.get_categoria_display }}</td></tr>
+        <tr><td>Lugar</td><td>{{ evento.lugar }}</td></tr>
+        <tr><td>Dirección</td><td>{{ evento.direccion }}</td></tr>
+        <tr><td>Fecha Inicio</td><td>{{ evento.fecha_inicio }}</td></tr>
+        <tr><td>Fecha Fin</td><td>{{ evento.fecha_fin }}</td></tr>
+        <tr><td>Modo</td><td>{{ evento.get_modo_display  }}</td></tr>
+        <tr><td>Fecha Creación</td><td>{{ evento.fecha_creacion }}</td></tr>
+        <tr><td>Fecha Actualización</td><td>{{ evento.fecha_actualizacion }}</td></tr>
+    </table>
+
+    <form>
+        <br>
+        <input type="button" value="Regresar" onclick="window.location.href='{% url 'eventos:list' %}'" />
+    </form>
+{% endblock %}
